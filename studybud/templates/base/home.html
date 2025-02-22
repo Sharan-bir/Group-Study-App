@@ -4,4 +4,29 @@
 
 <h1>Home Page</h1>
 
+<div>
+    <a href={% url 'create_room' %} >Create Room</a>
+    <br>
+    <br>
+    {% if rooms %}
+    
+    <h3>Rooms</h3>
+
+    {% endif %}
+<br>
+<br>
+    {% for room in rooms %}
+    Topic - {{room.topic}}<br>
+    Name - {{room.name}}    
+    <br>
+    Link - <a href={% url 'room' room.id %}>View Room</a>
+    <br>
+    <a href={% url 'update_room' room.id %}>Edit</a>
+    <a href={% url 'delete_room' room.id %}>Delete</a>
+    <br>
+    <hr>
+    {% endfor %}
+
+</div>
+
 {% endblock content %}
