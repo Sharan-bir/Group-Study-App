@@ -1,9 +1,18 @@
+from django.http import HttpRequest,HttpResponse
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import *
 
+def home(request:HttpRequest) -> HttpResponse:
+    rooms = Room.objects.all()
+    context = {'rooms':rooms}
+    return render(request,'base/home.html',context)
 
-def home(request):
-    return render(request,'home.html')
+def room(request:HttpRequest) -> HttpResponse:
+    rooms = Room.objects.all()
+    context = {'rooms':rooms}
+    return render(request,'base/room.html',context)
 
-def room(request):
-    return render(request,'room.html')
+def createRoom(request:HttpRequest) -> HttpResponse:
+    if request.method == "POST":
+        # room_name = request.POST.get('room_name')
+        pass
